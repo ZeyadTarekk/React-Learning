@@ -1,16 +1,19 @@
+import React from "react";
 function User(props) {
   return (
-    <div>
-      <img
+    <React.Fragment>
+      <div
         className="contact-avatar"
-        src={props.user.avatarURL}
-        alt={props.user.id}
-      />
+        style={{
+          backgroundImage: `url(${props.user.avatarURL})`,
+        }}
+      ></div>
       <div className="contact-details">
-        <h2>{props.user.name}</h2>
+        <p>{props.user.name}</p>
         <p>{props.user.handle}</p>
       </div>
-    </div>
+      <button className="contact-remove">Remove</button>
+    </React.Fragment>
   );
 }
 export default User;
