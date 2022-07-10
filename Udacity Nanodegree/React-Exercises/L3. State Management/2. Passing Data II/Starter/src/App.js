@@ -93,6 +93,30 @@ const movies = {
   },
 };
 
+const movieMap = new Map();
+
+for (const item of profiles) {
+  if (movieMap.has(item.favoriteMovieID)) {
+    const arr = movieMap.get(item.favoriteMovieID);
+    arr.push(users[item.userID].name);
+    movieMap.set(item.favoriteMovieID, arr);
+  } else {
+    movieMap.set(item.favoriteMovieID, [users[item.userID].name]);
+  }
+}
+
+const msgArray = new Array();
+
+for (const [key, value] of Object.entries(movies)) {
+  if (movieMap.get(key) === undefined) {
+    msgArray.push({ name: value.name, fav: ["Not Fav"] });
+  } else {
+    msgArray.push({ name: value.name, fav: movieMap.get(key) });
+  }
+}
+
+console.log(msgArray);
+
 const App = () => {
   return (
     <div className="App">
@@ -101,6 +125,13 @@ const App = () => {
         <h1 className="App-title">ReactND - Coding Practice</h1>
       </header>
       <h2>How Popular is Your Favorite Movie?</h2>
+      {msgArray.map((el) => {
+        return (
+          <div>
+            {el.name}: {el.fav.join(", ")}
+          </div>
+        );
+      })}
     </div>
   );
 };
