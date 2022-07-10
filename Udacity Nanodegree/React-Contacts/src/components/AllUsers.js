@@ -1,32 +1,34 @@
 import User from "./User";
 const contacts = [
   {
+    id: "tyler",
+    name: "Tyler McGinnis",
+    handle: "@tylermcginnis",
+    avatarURL: "http://localhost:5001/tyler.jpg",
+  },
+  {
     id: "karen",
     name: "Karen Isgrigg",
-    handle: "karen_isgrigg",
+    handle: "@karen_isgrigg",
     avatarURL: "http://localhost:5001/karen.jpg",
   },
   {
     id: "richard",
     name: "Richard Kalehoff",
-    handle: "richardkalehoff",
+    handle: "@richardkalehoff",
     avatarURL: "http://localhost:5001/richard.jpg",
-  },
-  {
-    id: "tyler",
-    name: "Tyler McGinnis",
-    handle: "tylermcginnis",
-    avatarURL: "http://localhost:5001/tyler.jpg",
   },
 ];
 
 function Users() {
   return (
-    <ul>
+    <ol className="contact-list">
       {contacts.map((user) => (
-        <li key={user.id}>{<User user={user} />}</li>
+        <li className="contact-list-item " key={user.id}>
+          {<User user={user} />}
+        </li>
       ))}
-    </ul>
+    </ol>
   );
 }
 
