@@ -1,7 +1,7 @@
 import "../css/App.css";
-
+import Users from "./AllUsers.js";
 const App = () => {
-  return <div>Hello World</div>;
+  return <Users />;
 };
 
 export default App;
