@@ -54,6 +54,20 @@ function Users() {
           }}
         />
       </div>
+      {query !== "" ? (
+        <div className="showing-contacts">
+          <span>
+            Now Showing {showingContacts.length} of {contacts.length}
+          </span>
+          <button
+            onClick={() => {
+              setQuery("");
+            }}
+          >
+            Show all
+          </button>
+        </div>
+      ) : null}
       <ol className="contact-list">
         {showingContacts.map((user) => (
           <li className="contact-list-item " key={user.id}>
