@@ -26,29 +26,57 @@ function Users() {
       avatarURL: "http://localhost:5001/richard.jpg",
     },
   ]);
+
+  const [query, setQuery] = useState("");
+
+  const updateQuery = (query) => {
+    console.log(query);
+    setQuery(query.trim());
+  };
+
+  const showingContacts =
+    query === ""
+      ? contacts
+      : contacts.filter((contact) =>
+          contact.name.toLowerCase().includes(query.toLowerCase())
+        );
+
   return (
-    <ol className="contact-list">
-      {contacts.map((user) => (
-        <li className="contact-list-item " key={user.id}>
-          <div
-            className="contact-avatar"
-            style={{
-              backgroundImage: `url(${user.avatarURL})`,
-            }}
-          ></div>
-          <div className="contact-details">
-            <p>{user.name}</p>
-            <p>{user.handle}</p>
-          </div>
-          <button
-            className="contact-remove"
-            onClick={() => removeContact(user)}
-          >
-            Remove
-          </button>
-        </li>
-      ))}
-    </ol>
+    <div className="list-contacts">
+      <div className="list-contacts-top">
+        <input
+          className="search-contacts"
+          type="text"
+          placeholder="Search Contacts"
+          value={query}
+          onChange={(event) => {
+            updateQuery(event.target.value);
+          }}
+        />
+      </div>
+      <ol className="contact-list">
+        {showingContacts.map((user) => (
+          <li className="contact-list-item " key={user.id}>
+            <div
+              className="contact-avatar"
+              style={{
+                backgroundImage: `url(${user.avatarURL})`,
+              }}
+            ></div>
+            <div className="contact-details">
+              <p>{user.name}</p>
+              <p>{user.handle}</p>
+            </div>
+            <button
+              className="contact-remove"
+              onClick={() => removeContact(user)}
+            >
+              Remove
+            </button>
+          </li>
+        ))}
+      </ol>
+    </div>
   );
 }
 
