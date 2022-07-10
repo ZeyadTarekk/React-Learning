@@ -2,6 +2,10 @@
 import { useState } from "react";
 
 function Users() {
+  const removeContact = (contact) => {
+    setContacts(contacts.filter((c) => c.id !== contact.id));
+  };
+
   const [contacts, setContacts] = useState([
     {
       id: "tyler",
@@ -36,7 +40,12 @@ function Users() {
             <p>{user.name}</p>
             <p>{user.handle}</p>
           </div>
-          <button className="contact-remove">Remove</button>
+          <button
+            className="contact-remove"
+            onClick={() => removeContact(user)}
+          >
+            Remove
+          </button>
         </li>
       ))}
     </ol>
