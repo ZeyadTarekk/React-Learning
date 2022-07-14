@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import * as ContactsAPI from "../utils/ContactsAPI";
 function Users() {
   const removeContact = (contact) => {
+    ContactsAPI.remove(contact);
     setContacts(contacts.filter((c) => c.id !== contact.id));
   };
 
