@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import { Link } from "react-router-dom";
 function ListContacts(props) {
   const [query, setQuery] = useState("");
 
@@ -27,9 +27,9 @@ function ListContacts(props) {
             updateQuery(event.target.value);
           }}
         />
-        <a href="#create" onClick={props.onNavigate} className="add-contact">
+        <Link to="/create" className="add-contact">
           Add Contact
-        </a>
+        </Link>
       </div>
       {query !== "" ? (
         <div className="showing-contacts">
