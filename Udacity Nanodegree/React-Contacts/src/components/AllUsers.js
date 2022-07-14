@@ -1,10 +1,11 @@
 // import User from "./User";
 import { useState, useEffect } from "react";
 import * as ContactsAPI from "../utils/ContactsAPI";
+import CreateContact from "./CreateContact";
 import ListContacts from "./ListContacts";
 function Users() {
   const [contacts, setContacts] = useState([]);
-
+  const [screen, setScreen] = useState("home");
   useEffect(() => {
     const getContacts = async () => {
       const res = await ContactsAPI.getAll();
@@ -21,7 +22,11 @@ function Users() {
 
   return (
     <div>
-      <ListContacts contacts={contacts} onDeleteContact={removeContact} />
+      {screen === "home" ? (
+        <ListContacts contacts={contacts} onDeleteContact={removeContact} />
+      ) : (
+        <CreateContact />
+      )}
     </div>
   );
 }
