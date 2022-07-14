@@ -27,6 +27,9 @@ function ListContacts(props) {
             updateQuery(event.target.value);
           }}
         />
+        <a href="#create" onClick={props.onNavigate} className="add-contact">
+          Add Contact
+        </a>
       </div>
       {query !== "" ? (
         <div className="showing-contacts">

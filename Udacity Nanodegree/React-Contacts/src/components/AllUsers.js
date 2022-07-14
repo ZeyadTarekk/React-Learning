@@ -23,7 +23,13 @@ function Users() {
   return (
     <div>
       {screen === "home" ? (
-        <ListContacts contacts={contacts} onDeleteContact={removeContact} />
+        <ListContacts
+          contacts={contacts}
+          onDeleteContact={removeContact}
+          onNavigate={() => {
+            setScreen("create");
+          }}
+        />
       ) : (
         <CreateContact />
       )}
