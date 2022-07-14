@@ -6,7 +6,6 @@ const CreateContact = ({ onCreateContact }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const values = serializeForm(event.target, { hash: true });
-    console.log(values);
     if (onCreateContact) {
       onCreateContact(values);
     }
