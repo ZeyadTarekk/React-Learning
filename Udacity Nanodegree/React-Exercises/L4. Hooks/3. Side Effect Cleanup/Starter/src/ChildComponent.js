@@ -4,7 +4,14 @@ function ChildComponent() {
   const [color, setColor] = useState("red");
 
   useEffect(() => {
-    setTimeout(() => setColor("green"), 3000);
+    let status = true;
+    setTimeout(() => {
+      if (status) setColor("green");
+    }, 3000);
+
+    return () => {
+      status = false;
+    };
   });
 
   return <p style={{ color }}>{color}</p>;
